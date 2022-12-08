@@ -1,7 +1,35 @@
-const React = require('react'); 
+// import React, { Component } from 'react'; 
 
-const SearchBar = () => {
-    return <input />;
+// class SearchBar extends React.Component {
+//     constructor(props) {
+//         super(props);
+
+//         this.state = { term: '' };
+//     }
+
+//     render() {
+//         return (
+//             <div>
+//                 <input
+//                 value={this.state.term}
+//                 onChange={event => this.setState({ term: event.target.value})} />
+//             </div>
+//         );
+//     }
+// }
+
+import React, { useState } from 'react';
+
+function SearchBar(event) {
+    const [term, setTerm] = useState('');
+
+    return (
+        <div>
+            <input
+                value={term}
+                onChange={(event) => setTerm(event.target.value)} />
+        </div>
+    );
 }
 
 export default SearchBar;
