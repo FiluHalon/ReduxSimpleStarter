@@ -18,16 +18,14 @@
 //     }
 // }
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function SearchBar(event) {
-    const [term, setTerm] = useState('');
+    const [term, setTerm] = useState("");
 
     return (
         <div>
-            <input
-                value={term}
-                onChange={(event) => setTerm(event.target.value)} />
+            <input value={term} onChange={(event) => setTerm(event.target.value)} />
         </div>
     );
 }

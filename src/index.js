@@ -1,46 +1,49 @@
-// import React, { Component } from 'react';
-import React, { useState } from 'react';
-import { createRoot } from 'react-dom/client';
-import SearchBar from './components/search_bar';
-import YTSearch from 'youtube-api-search';
-import VideoList from './components/video_list';
-const API_KEY = 'AIzaSyCrcoazmYnnYs5ocFv3ktI0bebv2myv7os';
+import React, { Component } from 'react';
+// import React, { useState } from "react";
+import { createRoot } from "react-dom/client";
+import SearchBar from "./components/search_bar";
+import YTSearch from "youtube-api-search";
+import VideoList from "./components/video_list";
+import VideoDetail from "./components/video_detail";
+const API_KEY = "AIzaSyAMr5ESHoJ9wrLtpNGjZK50RDHwcwUNS_I";
 
-// class App extends Component {
-//     constructor(props) {
-//         super(props);
+class App extends Component {
+    constructor(props) {
+        super(props);
 
-//         this.state = { videos: [] };
+        this.state = { videos: [] };
 
-//         YTSearch({ key: API_KEY, term: 'surfboards' }, (videos) => {
-//             this.setState({ videos });
-//         });
-//     }
+        YTSearch({ key: API_KEY, term: "cat" }, (videos) => {
+            this.setState({ videos });
+        });
+    }
 
-//     render() {
-//         return (
-//             <div>
-//                 <SearchBar />
-//                 <VideoList videos={this.state.videos} />
-//             </div>
-//         );
-//     }
-// }
-
-function App () {
-    const [videos, setVideos] = useState([]);
-
-    YTSearch({ key: API_KEY, term: 'surfboards' }, (videos) => {
-        setVideos(videos);
-    });
-
-    return (
-        <div>
-            <SearchBar />
-            <VideoList videos={videos} />
-        </div>
-    );
+    render() {
+        return (
+            <div>
+                <SearchBar />
+                <VideoDetail video={this.state.videos[0]} />
+                <VideoList videos={this.state.videos} />
+            </div>
+        );
+    }
 }
 
-const root = createRoot(document.querySelector('.container'));
+// const App = () => {
+//     const [videos, setVideos] = useState([]);
+
+//     YTSearch({ key: API_KEY, term: "cats" }, (videos) => {
+//         setVideos(videos);
+//     });
+
+//     return (
+//         <div>
+//             <SearchBar />
+//             <VideoDetail video={videos[0]} />
+//             <VideoList videos={videos} />
+//         </div>
+//     );
+// }
+
+const root = createRoot(document.querySelector(".container"));
 root.render(<App />);
