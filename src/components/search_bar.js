@@ -20,14 +20,21 @@
 
 import React, { useState } from "react";
 
-function SearchBar(event) {
+function SearchBar(props) {
     const [term, setTerm] = useState("");
 
     return (
-        <div>
-            <input value={term} onChange={(event) => setTerm(event.target.value)} />
+        <div className="search-bar">
+            <input
+                value={term}
+                onChange={(event) => onInputChange(event.target.value)} />
         </div>
     );
+
+    function onInputChange(term) {
+        setTerm(term);
+        props.onSearchTermChange(term);
+    }
 }
 
 export default SearchBar;
